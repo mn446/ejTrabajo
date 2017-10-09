@@ -21,6 +21,12 @@ namespace prueba1.Controllers
             return View(db.usuarios.ToList());
         }
 
+        public ActionResult logIn()
+        {
+
+            return View();
+        }
+
         //
         // GET: /Default1/Details/5
 
@@ -54,7 +60,7 @@ namespace prueba1.Controllers
                 usuario.activo = true;
                 db.usuarios.Add(usuario);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Home");
             }
 
             return View(usuario);
