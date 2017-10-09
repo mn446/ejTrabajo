@@ -150,6 +150,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Evento.cs" />
     <Compile Include="Models\ModelContext.cs" />
     <Compile Include="Models\Telefono.cs" />
     <Compile Include="Models\Usuario.cs" />

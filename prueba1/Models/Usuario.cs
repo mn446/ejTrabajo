@@ -17,5 +17,6 @@ namespace prueba1.Models
 
         // Relaciones
         public List<Telefono> telefonos { get; set; }
+        public List<Evento> eventos { get; set; }
     }
 }

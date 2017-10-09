@@ -12,5 +12,6 @@ namespace prueba1.Models
 
         public DbSet<Usuario> usuarios { get; set; }
         public DbSet<Telefono> telefonos { get; set; }
+        public DbSet<Evento> eventos { get; set; }
     }
 }
