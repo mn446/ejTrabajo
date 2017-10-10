@@ -268,11 +268,12 @@
     <Content Include="Views\Web.config" />
     <Content Include="packages.config" />
     <None Include="readme.txt" />
-    <Content Include="Views\Usuario\Index.cshtml" />
     <Content Include="Views\Usuario\Details.cshtml" />
     <Content Include="Views\Usuario\Create.cshtml" />
     <Content Include="Views\Usuario\Edit.cshtml" />
     <Content Include="Views\Usuario\Delete.cshtml" />
+    <Content Include="Views\Usuario\Find.cshtml" />
+    <Content Include="Views\Usuario\PostFind.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

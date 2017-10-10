@@ -12,45 +12,23 @@ namespace prueba1.Controllers
     public class UsuarioController : Controller
     {
         private ModelContext db = new ModelContext();
+        private Usuario user = null; // Aqui se guarda la seleccion del usuario a modificar, borrar, etc.
 
-        //
-        // GET: /Default1/
+        // Consultar usuarios ------------------------------------------------------------------------------------------
 
-        public ActionResult Index()
+        public ActionResult Details()
         {
             return View(db.usuarios.ToList());
         }
 
-        public ActionResult logIn()
-        {
-
-            return View();
-        }
-
-        //
-        // GET: /Default1/Details/5
-
-        public ActionResult Details(string id = null)
-        {
-            Usuario usuario = db.usuarios.Find(id);
-            if (usuario == null)
-            {
-                return HttpNotFound();
-            }
-            return View(usuario);
-        }
-
-        //
-        // GET: /Default1/Create
+        // Crear usuario --------------------------------------------------------------------------------------------------
 
         public ActionResult Create()
         {
             return View();
         }
 
-        //
-        // POST: /Default1/Create
-
+        // POST:
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Usuario usuario)
@@ -66,21 +44,16 @@ namespace prueba1.Controllers
             return View(usuario);
         }
 
-        //
-        // GET: /Default1/Edit/5
+        // Modificar usuario ------------------------------------------------------------------------------------------------
+        
+        // GET:
 
-        public ActionResult Edit(string id = null)
+        public ActionResult B_Edit()
         {
-            Usuario usuario = db.usuarios.Find(id);
-            if (usuario == null)
-            {
-                return HttpNotFound();
-            }
-            return View(usuario);
+            return View("Edit");
         }
 
-        //
-        // POST: /Default1/Edit/5
+        // POST:
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -95,28 +68,41 @@ namespace prueba1.Controllers
             return View(usuario);
         }
 
-        //
-        // GET: /Default1/Delete/5
+        // Buscar usuario ------------------------------------------------------------------------------------------------
+        // GET: 
 
-        public ActionResult Delete(string id = null)
+        public ActionResult Find()
         {
-            Usuario usuario = db.usuarios.Find(id);
-            if (usuario == null)
-            {
-                return HttpNotFound();
-            }
-            return View(usuario);
+            return View();
         }
 
-        //
-        // POST: /Default1/Delete/5
+        public ActionResult MostrarUsuario(string mail)
+        {
+            user = db.usuarios.Find(mail);
+            ViewBag.Nombre = user.Nombre;
+            ViewBag.Apellido = user.Apellido;
+            ViewBag.Mail = user.mail;
+            return View("PostFind");
+        }
+
+        // Borrar usuario ------------------------------------------------------------------------------------------------
+        // GET: 
+
+        public ActionResult Delete()
+        {
+            ViewBag.Nombre = user.Nombre;
+            ViewBag.Apellido = user.Apellido;
+            ViewBag.Mail = user.mail;
+            return View("Delete");
+        }
+
+        // POST: 
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed()
         {
-            Usuario usuario = db.usuarios.Find(id);
-            db.usuarios.Remove(usuario);
+            db.usuarios.Remove(user);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

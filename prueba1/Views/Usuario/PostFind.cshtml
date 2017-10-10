@@ -1,8 +1,12 @@
 ﻿@model prueba1.Models.Usuario
 
+@{
+    ViewBag.Title = "Darse de alta como usuario";
+}
+
 <fieldset>
     <div class="editor-label">
-        <h3> ¿Realmente desea eliminar este usuario de la base de datos? </h3>
+        <h3> Realizar cambios en este usuario </h3>
     </div>
   
     <ul>
@@ -10,10 +14,20 @@
         <li><span>Apellido:   </span>@ViewBag.Apellido</li>  
         <li><span>Correo electronico:   </span>@ViewBag.Mail</li> 
     </ul>           
+     
+    @using (Html.BeginForm("Delete", "Usuario"))
+    { <input type="submit" value="Borrar usuario"/> }
     
-    <input type="submit" value="Eliminar" />
+    @using (Html.BeginForm("B_Edit", "Usuario"))
+    { <input type="submit" value="Modificar usuario" />}
+    
+
+    
+
 </fieldset>
 
 <div>
     @Html.ActionLink("Volver", "Find", "Usuario")
 </div>
+
+

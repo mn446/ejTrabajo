@@ -1,36 +1,37 @@
-﻿@model prueba1.Models.Usuario
+﻿@model IEnumerable<prueba1.Models.Usuario>
 
-@{
-    ViewBag.Title = "Details";
+<h2> Consulta de usuarios </h2>
+
+<table>
+    <tr>
+        <th>
+            <span>Nombre</span>    
+        </th>
+        <th>
+            <span>Apellido</span>
+        </th>
+        <th>
+            <span>Correo electronico</span>
+        </th>
+
+      </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @item.Nombre
+        </td>
+        <td>
+            @item.Apellido
+        </td>
+        <td>
+            @item.mail
+        </td>
+    </tr>
 }
 
-<h2>Details</h2>
+</table>
 
-<fieldset>
-    <legend>Usuario</legend>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Nombre)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Nombre)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Apellido)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Apellido)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.mail)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.mail)
-    </div>
-</fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.mail }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Volver", "Index", "Home")
 </p>

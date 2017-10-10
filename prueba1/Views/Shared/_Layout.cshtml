@@ -1,30 +1,24 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8" />
-        <title>Gestion de reservas</title>
-        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta charset="utf-8" />                                               @*Permitir caracteres especiales*@
+        <title> Ejercicio ASP.NET MVC</title>                                  @*Titulo*@
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />  @*Icono para mostrar en la pestaña*@
         <meta name="viewport" content="width=device-width" />
-        @Styles.Render("~/Content/css")
-        @Scripts.Render("~/bundles/modernizr")
+        @Styles.Render("~/Content/css")                                        @*Carga hoja de estilo CSS*@
+        @Scripts.Render("~/bundles/modernizr")                                 @*Carga archivos javascript*@
     </head>
+
     <body>
+
+
         <header>
             <div class="content-wrapper">
 
                 <div class="float-right">
-                    <section id="login">
-                        
-                       Hello, <span class="username">@User.Identity.Name</span>!
-                    </section>
-                    <nav>
-                        <ul id="menu">
-                            <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                            <li>@Html.ActionLink("Sobre el sitio", "About", "Home")</li>
-                            <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
-                        </ul>
-                    </nav>
+                    <h2 id="menu"> Gestion de Usuarios </h2>
                 </div>
+
             </div>
         </header>
 

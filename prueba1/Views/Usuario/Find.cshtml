@@ -1,0 +1,25 @@
+﻿<fieldset>
+
+    <div class="editor-label">
+        <h3> Ingresar el correo electrónico del usuario para el cual desea realizar cambios </h3>
+    </div>
+
+    <div class="editor-field">
+    @using (Html.BeginForm("MostrarUsuario","Usuario")) 
+    { 
+        <input type="text" name="mail"/> 
+        <input type="submit" value="Buscar usuario" />
+    }
+
+    @*
+    Para pasar un dato simple al controlador desde la vista (no un objeto)
+    uso Html.BeginForm y utilizo campos y botones dentro del Html.BeginForm
+    *@
+    </div>
+</fieldset>
+
+<div>
+    @Html.ActionLink("Volver", "Index", "Home")
+</div>
+
+
