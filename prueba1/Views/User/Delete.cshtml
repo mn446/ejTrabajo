@@ -1,0 +1,40 @@
+﻿@model prueba1.Models.Usuario
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Eliminar</h2>
+
+<h3>¿Esta seguro que desea eliminar este usuario?</h3>
+<fieldset>
+    <legend>Usuario</legend>
+
+    <div class="display-label">
+        <span><b>Nombre</b></span>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Nombre)
+    </div>
+
+    <div class="display-label">
+        <span><b>Apellido</b></span>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Apellido)
+    </div>
+
+    <div class="display-label">
+         <span><b>Correo electronico</b></span>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.mail)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Eliminar usuario" /> |
+        @Html.ActionLink("Volver", "Index")
+    </p>
+}

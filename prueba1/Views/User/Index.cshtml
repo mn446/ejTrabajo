@@ -1,0 +1,50 @@
+﻿@model IEnumerable<prueba1.Models.Usuario>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Gestionar usuario</h2>
+
+<table>
+    <tr>
+        <th>
+            <span>Nombre</span>
+        </th>
+        <th>
+            <span>Apellido</span>
+        </th>
+        <th>
+            <span>Correo Electronico</span>
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) 
+{
+    if (item.activo)  // Baja lógica
+    {     
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Apellido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mail)
+        </td>
+        <td>
+            @Html.ActionLink("Modificar", "Edit", new { id=item.mail }) |
+            @Html.ActionLink("Consultar datos completos", "Details", new { id=item.mail }) |
+            @Html.ActionLink("Borrar", "Delete", new { id=item.mail })
+        </td>
+    </tr>}
+
+}
+
+<p>
+    @Html.ActionLink("Crear Usuario", "Create")
+</p>
+
+</table>

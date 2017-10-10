@@ -1,6 +1,10 @@
 ﻿@model prueba1.Models.Usuario
 
-<h2>Modificar datos del usuario</h2>
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
@@ -9,10 +13,8 @@
     <fieldset>
         <legend>Usuario</legend>
 
-        @Html.HiddenFor(model => model.mail)
-
         <div class="editor-label">
-            <span>Nombre</span>
+            @Html.LabelFor(model => model.Nombre)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Nombre)
@@ -20,7 +22,7 @@
         </div>
 
         <div class="editor-label">
-            <span>Apellido</span>
+            @Html.LabelFor(model => model.Apellido)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Apellido)
@@ -28,7 +30,7 @@
         </div>
 
         <div class="editor-label">
-            <span>Correo electronico</span>
+            @Html.LabelFor(model => model.mail)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.mail)
@@ -36,13 +38,13 @@
         </div>
 
         <p>
-            <input type="submit" value="Guardar cambios" />
+            <input type="submit" value="Crear usuario" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Volver", "Index")
+    @Html.ActionLink("Back to List", "Index")
 </div>
 
 @section Scripts {

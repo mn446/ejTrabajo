@@ -1,6 +1,10 @@
 ﻿@model prueba1.Models.Usuario
 
-<h3> Dar de alta usuario en el sistema </h3>
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Modificar</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
@@ -9,25 +13,18 @@
     <fieldset>
         <legend>Usuario</legend>
 
-        <div class="editor-label">
-            <h3> Nombre </h3>
-        </div>
+        @Html.HiddenFor(model => model.mail)
 
+        <div class="editor-label">
+            <span><b>Nombre</b></span>
+        </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Nombre) 
-            
-            @*            
-            La expresion "model => model.Nombre" es una lambda expression
-            lo cual es equivalente a decir Function(Data x) { return x.Name }
-            Los métodos Html.--- se usan para devolver objetos de la clase
-            definida en @model
-            *@
-            
+            @Html.EditorFor(model => model.Nombre)
             @Html.ValidationMessageFor(model => model.Nombre)
         </div>
 
         <div class="editor-label">
-            <h3> Apellido </h3>
+            <span><b>Apellido</b></span>
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Apellido)
@@ -35,7 +32,7 @@
         </div>
 
         <div class="editor-label">
-            <h3> Correo electronico </h3>
+            <span><b>Correo Electronico</b></span>
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.mail)
@@ -43,13 +40,13 @@
         </div>
 
         <p>
-            <input type="submit" value="Crear usuario" />
+            <input type="submit" value="Guardar modificaciones" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Volver", "Index", "Home")
+    @Html.ActionLink("Volver", "Index")
 </div>
 
 @section Scripts {
