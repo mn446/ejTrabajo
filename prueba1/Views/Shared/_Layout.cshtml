@@ -6,19 +6,18 @@
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />  @*Icono para mostrar en la pestaña*@
         <meta name="viewport" content="width=device-width" />
         @Styles.Render("~/Content/css") 
-        @Scripts.Render("~/bundles/jqueryui")    
-        @Scripts.Render("~/bundles/jquery")       
+        @Scripts.Render("~/bundles/jquery")      
         @Scripts.Render("~/bundles/modernizr")                                   
+    
     </head>
 
     <body>
-
 
         <header>
             <div class="content-wrapper">
 
                 <div class="float-right">
-                    <h2 id="menu"> Sistema de gestión de reservas </h2>
+                    <h2 id="menu"> Sistema de usuarios </h2>
                 </div>
             </div>
         </header>
@@ -29,30 +28,18 @@
             <section class="content-wrapper main-content clear-fix">
                 @RenderBody()
             </section>
-            <p id="prueba"> Texto a borrar </p>
-            <input type="button" value="boton " />
-
         </div>
 
 
         <footer>
             <div class="content-wrapper">
                 <div class="float-left">
-                    <p>&copy; @DateTime.Now.Year - Sistema de gestion de reservas</p>
+                    <p>&copy; @DateTime.Now.Year - Sistema de usuarios</p>
                 </div>
             </div>
         </footer>
 
-        @*@RenderSection("scripts", required: false)*@
-
-             <script>
-                        $(document).ready(function () {
-                            $("button").click(function () {
-                                $("p").hide();
-                            });
-                        });
-            </script>
-         
-
+        @RenderSection("scripts", required: false)
+   
     </body>
 </html>

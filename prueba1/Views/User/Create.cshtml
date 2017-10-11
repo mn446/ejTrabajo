@@ -4,9 +4,10 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>Crear usuario nuevo</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
@@ -14,7 +15,7 @@
         <legend>Usuario</legend>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Nombre)
+            <span>Nombre</span>
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Nombre)
@@ -22,7 +23,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Apellido)
+            <span>Apellido</span>
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Apellido)
@@ -30,7 +31,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.mail)
+            <span>Correo electronico</span>
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.mail)
@@ -41,12 +42,10 @@
             <input type="submit" value="Crear usuario" />
         </p>
     </fieldset>
-    
-
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Volver", "Index")
 </div>
 
 

@@ -13,16 +13,14 @@ namespace prueba1.Controllers
     {
         private ModelContext db = new ModelContext();
 
-        //
-        // GET: /User/
+        // Listado de usuarios ------------------------------------------------------------------------
 
         public ActionResult Index()
         {
             return View(db.usuarios.ToList());
         }
 
-        //
-        // GET: /User/Details/5
+        // Datos completos de un usuario ---------------------------------------------------------------
 
         public ActionResult Details(string id = null)
         {
@@ -34,23 +32,22 @@ namespace prueba1.Controllers
             return View(usuario);
         }
 
-        //
-        // GET: /User/Create
+        // Dar de alta un usuario -----------------------------------------------------------------------
 
         public ActionResult Create()
         {
             return View();
         }
 
-        //
-        // POST: /User/Create
+        // POST:
 
-        [HttpPost]
+        [HttpPost, ActionName("Create")]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Usuario usuario)
+        public ActionResult PostCreate(Usuario usuario)
         {
             if (ModelState.IsValid)
             {
+                usuario.activo = true;
                 db.usuarios.Add(usuario);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -59,8 +56,7 @@ namespace prueba1.Controllers
             return View(usuario);
         }
 
-        //
-        // GET: /User/Edit/5
+        // Modificar datos de usuario -----------------------------------------------------------------------
 
         public ActionResult Edit(string id = null)
         {
@@ -72,8 +68,7 @@ namespace prueba1.Controllers
             return View(usuario);
         }
 
-        //
-        // POST: /User/Edit/5
+        // POST:
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -88,8 +83,32 @@ namespace prueba1.Controllers
             return View(usuario);
         }
 
+        // Baja Logica ------------------------------------------------------------------------------------------
+
+        public ActionResult LogicDelete(string id = null)
+        {
+            Usuario usuario = db.usuarios.Find(id);
+            if (usuario == null)
+            {
+                return HttpNotFound();
+            }
+            return View(usuario);
+        }
+
         //
-        // GET: /User/Delete/5
+        // POST: /User/Delete
+
+        [HttpPost, ActionName("LogicDelete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult LocigDeleteConfirmed(string id)
+        {
+            Usuario usuario = db.usuarios.Find(id);
+            usuario.activo = false; // baja lógica
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        // Baja Fisica ------------------------------------------------------------------------------------------
 
         public ActionResult Delete(string id = null)
         {
@@ -102,15 +121,14 @@ namespace prueba1.Controllers
         }
 
         //
-        // POST: /User/Delete/5
+        // POST: /User/Delete
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
             Usuario usuario = db.usuarios.Find(id);
-            usuario.activo = false; // baja lógica
-            //db.usuarios.Remove(usuario);
+            db.usuarios.Remove(usuario);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

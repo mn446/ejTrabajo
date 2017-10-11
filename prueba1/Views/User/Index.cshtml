@@ -37,7 +37,8 @@
         <td>
             @Html.ActionLink("Modificar", "Edit", new { id=item.mail }) |
             @Html.ActionLink("Consultar datos completos", "Details", new { id=item.mail }) |
-            @Html.ActionLink("Borrar", "Delete", new { id=item.mail })
+            @Html.ActionLink("Baja Fisica", "Delete", new { id=item.mail }) |
+            @Html.ActionLink("Baja Logica", "LogicDelete", new { id=item.mail })
         </td>
     </tr>}
 
