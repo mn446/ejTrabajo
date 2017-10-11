@@ -1,12 +1,14 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8" />                                               @*Permitir caracteres especiales*@
-        <title> Ejercicio ASP.NET MVC</title>                                  @*Titulo*@
+        <meta charset="utf-8" />                                             
+        <title> Ejercicio ASP.NET MVC</title>                                  
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />  @*Icono para mostrar en la pestaña*@
         <meta name="viewport" content="width=device-width" />
-        @Styles.Render("~/Content/css")                                        @*Carga hoja de estilo CSS*@
-        @Scripts.Render("~/bundles/modernizr")                                 @*Carga archivos javascript*@
+        @Styles.Render("~/Content/css") 
+        @Scripts.Render("~/bundles/jqueryui")    
+        @Scripts.Render("~/bundles/jquery")       
+        @Scripts.Render("~/bundles/modernizr")                                   
     </head>
 
     <body>
@@ -18,7 +20,6 @@
                 <div class="float-right">
                     <h2 id="menu"> Sistema de gestión de reservas </h2>
                 </div>
-
             </div>
         </header>
 
@@ -28,7 +29,11 @@
             <section class="content-wrapper main-content clear-fix">
                 @RenderBody()
             </section>
+            <p id="prueba"> Texto a borrar </p>
+            <input type="button" value="boton " />
+
         </div>
+
 
         <footer>
             <div class="content-wrapper">
@@ -38,7 +43,16 @@
             </div>
         </footer>
 
-        @Scripts.Render("~/bundles/jquery")
-        @RenderSection("scripts", required: false)
+        @*@RenderSection("scripts", required: false)*@
+
+             <script>
+                        $(document).ready(function () {
+                            $("button").click(function () {
+                                $("p").hide();
+                            });
+                        });
+            </script>
+         
+
     </body>
 </html>
