@@ -1,37 +1,56 @@
 ﻿@model IEnumerable<prueba1.Models.Usuario>
+@Scripts.Render("~/bundles/jquery") 
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Gestionar usuario</h2>
+<h2>Gestion de usuarios</h2>
 
 <table>
     <tr>
         <th>
             <span>Nombre</span>
+            <input type="text" name="nombre" id="name" />
         </th>
         <th>
             <span>Apellido</span>
+            <input type="text" name="apellido" id="surname" /
         </th>
         <th>
             <span>Correo Electronico</span>
+            <input type="text" name="mail" id="email" /
         </th>
-        <th></th>
     </tr>
+
+@*@using (Ajax.BeginForm("Index", "User", null , new AjaxOptions()
+{
+    HttpMethod = "POST",
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "resultados"  
+    
+}, new { id = "Formulario" })) // set new Id name for  Form
+{
+    <input type="hidden" name="nombre" id="name" />
+}
+    
+    <div id="resultados">
+
+    </div>*@
+
 
 @foreach (var item in Model) 
 {
     if (item.activo)  // Baja lógica
     {     
-    <tr>
-        <td>
+    <tr class="dato">
+        <td id="nombre">
             @Html.DisplayFor(modelItem => item.Nombre)
         </td>
-        <td>
+        <td id="apellido">
             @Html.DisplayFor(modelItem => item.Apellido)
         </td>
-        <td>
+        <td id="mail">
             @Html.DisplayFor(modelItem => item.mail)
         </td>
         <td>
@@ -40,9 +59,79 @@
             @Html.ActionLink("Baja Fisica", "Delete", new { id=item.mail }) |
             @Html.ActionLink("Baja Logica", "LogicDelete", new { id=item.mail })
         </td>
-    </tr>}
+    </tr>
 
+    
+    }
+    
 }
+
+<script>
+
+    // Filtro por nombre
+    $(function () {
+
+        $("#name").keyup(function () {
+            var texto = $(this).val();
+
+            $(".dato").each(function () {
+                var nombre = $(this).children("#nombre").text();
+                var resultado = nombre.toUpperCase().indexOf(' ' + texto.toUpperCase());
+
+                if (resultado < 0) {
+                    $(this).hide();
+                } else {
+                    $(this).show();
+                }
+            });
+        });
+    });
+
+    // Filtro por apellido
+    $(function () {
+
+        $("#surname").keyup(function () {
+            var texto = $(this).val();
+
+            $(".dato").each(function () {
+                var nombre = $(this).children("#apellido").text();
+                var resultado = nombre.toUpperCase().indexOf(' ' + texto.toUpperCase());
+
+
+
+                if (resultado < 0) {
+                    $(this).hide();
+                } else {
+                    $(this).show();
+                }
+            });
+        });
+    });
+
+    // Filtro por mail
+    $(function () {
+
+        $("#email").keyup(function () {
+            var texto = $(this).val();
+
+            $(".dato").each(function () {
+                var nombre = $(this).children("#mail").text();
+                var resultado = nombre.toUpperCase().indexOf(' ' + texto.toUpperCase());
+
+                if (resultado < 0) {
+                    $(this).hide();
+                } else {
+                    $(this).show();
+                }
+            });
+        });
+    });
+
+
+</script>
+
+
+    
 
 <p>
     @Html.ActionLink("Crear Usuario", "Create")

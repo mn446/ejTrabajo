@@ -36,6 +36,7 @@ namespace prueba1.Controllers
 
         public ActionResult Create()
         {
+            //Tuple<Usuario, Telefono> tuple = new Tuple<Usuario, Telefono>(new Usuario(), new Telefono());
             return View();
         }
 
@@ -43,17 +44,22 @@ namespace prueba1.Controllers
 
         [HttpPost, ActionName("Create")]
         [ValidateAntiForgeryToken]
-        public ActionResult PostCreate(Usuario usuario)
+        public ActionResult PostCreate(Tuple<Usuario, Telefono> tupla)
         {
             if (ModelState.IsValid)
             {
-                usuario.activo = true;
-                db.usuarios.Add(usuario);
+                tupla.Item1.activo = true;
+                //List<Telefono> tels = new List<Telefono>();
+                //tels.Add(tupla.Item2);
+                //tupla.Item1.telefonos = tels;
+
+                db.usuarios.Add(tupla.Item1);
+                //db.telefonos.Add(tupla.Item2);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(usuario);
+            return View();
         }
 
         // Modificar datos de usuario -----------------------------------------------------------------------

@@ -1,7 +1,23 @@
-﻿@section featured 
+﻿@*@section login 
 {
     <section class="featured">
-        <div class="content-wrapper">
+        <div>
+                <p><b>Iniciar sesión</b></p>
+                <p>Correo electronico : <input type="text" name="mail" value=" " /></p> 
+                <p><input type="button" name="iniciarSesion" value="Iniciar sesión"/></p>
+			    <span>@Html.ActionLink("Crear un nuevo usuario", "Create", "User")</span>
+
+        </div>
+    </section>
+}*@
+
+
+
+@section menu 
+{
+    <section class="featured">
+        <div>
+            <h2>Menu principal</h2>
             <ul>
 			    <li>@Html.ActionLink("Gestionar usuarios", "Index", "User")</li>
 		    </ul>

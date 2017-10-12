@@ -756,3 +756,40 @@ tr.pager td {
 }
 
 
+/* Estilo implementado por mi */
+.loginSup 
+{
+    height: 200px;
+    width: 100%;
+    margin: 20px;
+    display: flexbox;
+     
+}
+
+    .loginSup .primero 
+    {
+        flex: 8 1 80px;
+        background-color: red;
+    }
+
+        .loginSup .segundo
+    {
+        flex: 2 1 20px;
+    }
+
+           .loginSup div span
+        {
+            display: inline;
+        }
+
+        .loginSup div input
+        {
+            display: inline-block;
+            height: 10px;
+            width: 100px;
+
+        }
+
+
+
+

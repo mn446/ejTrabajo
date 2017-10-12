@@ -13,10 +13,15 @@ namespace prueba1.Models
         public string mail { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
-        public bool activo { get; set; } 
+        public bool activo { get; set; }
+        public bool administrador { get; set; }
 
         // Relaciones
         public List<Telefono> telefonos { get; set; }
         public List<Evento> eventos { get; set; }
+
+        // Contructor
+        public Usuario(){}
+
     }
 }

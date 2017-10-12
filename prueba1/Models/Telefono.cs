@@ -12,6 +12,7 @@ namespace prueba1.Models
         public int numero { get; set; }
         public string tipo { get; set; }
 
-
+        // Contructor
+        public Telefono(){}
     }
 }

@@ -145,6 +145,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TelefonoController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -162,6 +163,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\jsScripts\HomeIndex\homeIndex.js" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -278,6 +280,11 @@
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\User\Delete.cshtml" />
     <Content Include="Views\User\LogicDelete.cshtml" />
+    <Content Include="Views\Telefono\Index.cshtml" />
+    <Content Include="Views\Telefono\Details.cshtml" />
+    <Content Include="Views\Telefono\Create.cshtml" />
+    <Content Include="Views\Telefono\Edit.cshtml" />
+    <Content Include="Views\Telefono\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

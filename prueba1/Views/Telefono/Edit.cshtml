@@ -1,0 +1,38 @@
+﻿@model prueba1.Models.Telefono
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Telefono</legend>
+
+        @Html.HiddenFor(model => model.numero)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.tipo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.tipo)
+            @Html.ValidationMessageFor(model => model.tipo)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

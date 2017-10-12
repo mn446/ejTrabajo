@@ -14,5 +14,8 @@ namespace prueba1.Models
         [Key, Column(Order = 1)]
         public DateTime fecha { get; set; }
 
+        // Constructor
+        public Evento() { }
+
     }
 }

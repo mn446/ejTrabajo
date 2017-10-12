@@ -5,7 +5,7 @@
         <title> Ejercicio ASP.NET MVC</title>                                  
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />  @*Icono para mostrar en la pestaña*@
         <meta name="viewport" content="width=device-width" />
-        @Styles.Render("~/Content/css") 
+@*        @Styles.Render("~/Content/css") *@
         @Scripts.Render("~/bundles/jquery")      
         @Scripts.Render("~/bundles/modernizr")                                   
     
@@ -14,17 +14,18 @@
     <body>
 
         <header>
-            <div class="content-wrapper">
+            <div>
 
-                <div class="float-right">
-                    <h2 id="menu"> Sistema de usuarios </h2>
+                <div class="segundo">
+                    @RenderSection("login", required: false)
+    
                 </div>
             </div>
         </header>
 
 
         <div id="body">
-            @RenderSection("featured", required: false)
+            @RenderSection("menu", required: false)
             <section class="content-wrapper main-content clear-fix">
                 @RenderBody()
             </section>
@@ -40,6 +41,7 @@
         </footer>
 
         @RenderSection("scripts", required: false)
+            
    
     </body>
 </html>
