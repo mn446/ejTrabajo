@@ -2,13 +2,19 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />                                             
-        <title> Ejercicio ASP.NET MVC</title>                                  
-        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />  @*Icono para mostrar en la pestaña*@
+        <title ng-bind="models.helloAngular"></title>                               
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <meta name="viewport" content="width=device-width" />
+
 @*        @Styles.Render("~/Content/css") *@
-        @Scripts.Render("~/bundles/jquery")      
+        @Scripts.Render("~/bundles/jquery") 
+        @Scripts.Render("~/bundles/bootstrap")    
+        @Scripts.Render("~/bundles/angularJs") 
+@*         @Scripts.Render("~/bundles/appJS")  *@
+        @Styles.Render("~/Content/toastr") 
         @Scripts.Render("~/bundles/modernizr")                                   
-    
+        <script src="~/Scripts/angularJS/home.js"></script>
+
     </head>
 
     <body>
@@ -40,8 +46,26 @@
             </div>
         </footer>
 
-        @RenderSection("scripts", required: false)
-            
+<div ng-app="myApp" ng-controller="myCtrl">
+
+    Primer nombre: <input type="text" ng-model="firstName" />
+    Segundo nombre: <input type="text" ng-model="lastName" />
+@*    Tercer nombre: <input type="text" ng-model="arrayNames[1]" />*@
+
+    <p>{{fullName}}</p>
+    <p>{{firstName}}</p>
+
+    <input type="button" ng-click="function2()" value="Boton"/>
+
+
+</div>
+
+
+  
+        @RenderSection("scripts", required: false)   
+        
+        
+
    
     </body>
 </html>

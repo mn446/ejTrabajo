@@ -38,6 +38,23 @@ namespace prueba1
                         "~/Content/themes/base/jquery.ui.datepicker.css",
                         "~/Content/themes/base/jquery.ui.progressbar.css",
                         "~/Content/themes/base/jquery.ui.theme.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/angularJs").Include("~/Scripts/angular.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include("~/Scripts/bootstrap.js", "~/Scripts/respond.js"));
+
+            bundles.Add(new StyleBundle("~/Content/toastr").Include("~/Content/toastr.css"));
+
+            //bundles.Add(new ScriptBundle("~/bundles/miPackJs").Include("~/Scripts/angularJS/Controlador.js", "~/Scripts/angularJS/Modulo.js"));
+
+
+            bundles.Add(new ScriptBundle("~/bundles/appJS").Include("~/Scripts/angularJS/home.js"));
+
+            //For enabling optimization forcefully.  
+            BundleTable.EnableOptimizations = true; 
+
         }
+
+
     }
 }

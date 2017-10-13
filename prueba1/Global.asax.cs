@@ -23,6 +23,8 @@ namespace prueba1
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             System.Web.Optimization.BundleTable.EnableOptimizations = true;
+
+            //GlobalConfiguration.Configure(WebApiConfig.Register);
         }
     }
 }
