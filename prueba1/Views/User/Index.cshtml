@@ -4,9 +4,10 @@
     ViewBag.Title = "Index";
 }
 
+
 <h2>Gestion de usuarios</h2>
 
-<table>
+<table ng-controller="myCtrl">
     <tr>
         <th>
             <span>Nombre</span>
@@ -38,34 +39,36 @@
     </div>*@
 
 
-@foreach (var item in Model) 
-{
-    if (item.activo)  // Baja lógica
-    {     
-    <tr class="dato">
-        <td id="nombre">
-            @Html.DisplayFor(modelItem => item.Nombre)
-        </td>
-        <td id="apellido">
-            @Html.DisplayFor(modelItem => item.Apellido)
-        </td>
-        <td id="mail">
-            @Html.DisplayFor(modelItem => item.mail)
-        </td>
-        <td>
-            @Html.ActionLink("Modificar", "Edit", new { id=item.mail }) |
-            @Html.ActionLink("Consultar datos completos", "Details", new { id=item.mail }) |
-            @Html.ActionLink("Baja Fisica", "Delete", new { id=item.mail }) |
-            @Html.ActionLink("Baja Logica", "LogicDelete", new { id=item.mail })
-        </td>
-    </tr>
+        @foreach (var item in Model) 
+        {
+            if (item.activo)  // Baja lógica
+            {     
+            <tr>
+                <td id="nombre" ng-model="usuarios[$index]">
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td id="apellido">
+                    @Html.DisplayFor(modelItem => item.Apellido)
+                </td>
+                <td id="mail">
+                    @Html.DisplayFor(modelItem => item.mail)
+                </td>
+                <td>
+                    @Html.ActionLink("Modificar", "Edit", new { id=item.mail }) |
+                    @Html.ActionLink("Consultar datos completos", "Details", new { id=item.mail }) |
+                    @Html.ActionLink("Baja Fisica", "Delete", new { id=item.mail }) |
+                    @Html.ActionLink("Baja Logica", "LogicDelete", new { id=item.mail })
+                </td>
+            </tr>
+            }  
+        }
+
+
+
+
 
     
-    }
-    
-}
-
-<script>
+@*<script>
 
     // Filtro por nombre
     $(function () {
@@ -127,13 +130,42 @@
     });
 
 
-</script>
+</script>*@
 
-
-    
+</table>
 
 <p>
     @Html.ActionLink("Crear Usuario", "Create")
 </p>
 
-</table>
+<div ng-controller="myCtrl">
+    <p> {{ fullName}}</p>
+</div>
+
+<div ng-controller="myCtrl">
+
+    <table>
+        <tr>
+            <th>
+                <span>Nombre</span>
+                @*<input type="text" name="nombre" id="name" />*@
+            </th>
+            <th>
+                <span>Apellido</span>
+                @*<input type="text" name="apellido" id="surname" />*@
+            </th>
+            <th>
+                <span>Correo Electronico</span>
+                @*<input type="text" name="mail" id="email" />*@
+            </th>
+        </tr>
+
+
+        <tr ng-repeat="us in usuarios">
+            <td> {{us.Nombre}}</td>
+            <td>{{us.Apellido}}</td>
+            <td>{{us.mail}}</td>
+        </tr>
+    </table>
+
+</div>

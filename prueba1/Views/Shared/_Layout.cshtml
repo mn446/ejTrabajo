@@ -1,33 +1,33 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
     <head>
-        <meta charset="utf-8" />                                             
-        <title ng-bind="models.helloAngular"></title>                               
+        <title> Gestion de usuarios </title>
+        <meta charset="utf-8" />                                                                          
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-        <meta name="viewport" content="width=device-width" />
+        <meta name="viewport" content="width=device-width" />                    
 
-@*        @Styles.Render("~/Content/css") *@
         @Scripts.Render("~/bundles/jquery") 
         @Scripts.Render("~/bundles/bootstrap")    
         @Scripts.Render("~/bundles/angularJs") 
-@*         @Scripts.Render("~/bundles/appJS")  *@
+        @Scripts.Render("~/bundles/appJS")  
+        @Scripts.Render("~/bundles/modernizr")
+        @*@Styles.Render("~/Content/css") *@
         @Styles.Render("~/Content/toastr") 
-        @Scripts.Render("~/bundles/modernizr")                                   
-        <script src="~/Scripts/angularJS/home.js"></script>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
     </head>
 
+
     <body>
 
-        <header>
+@*        <header>
             <div>
-
                 <div class="segundo">
                     @RenderSection("login", required: false)
     
                 </div>
             </div>
-        </header>
+        </header>*@
 
 
         <div id="body">
@@ -46,26 +46,9 @@
             </div>
         </footer>
 
-<div ng-app="myApp" ng-controller="myCtrl">
+        <div ng-controller="myCtrl">
+            <p> {{fullName}}</p>
+        </div>
 
-    Primer nombre: <input type="text" ng-model="firstName" />
-    Segundo nombre: <input type="text" ng-model="lastName" />
-@*    Tercer nombre: <input type="text" ng-model="arrayNames[1]" />*@
-
-    <p>{{fullName}}</p>
-    <p>{{firstName}}</p>
-
-    <input type="button" ng-click="function2()" value="Boton"/>
-
-
-</div>
-
-
-  
-        @RenderSection("scripts", required: false)   
-        
-        
-
-   
     </body>
 </html>

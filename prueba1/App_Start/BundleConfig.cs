@@ -45,13 +45,8 @@ namespace prueba1
 
             bundles.Add(new StyleBundle("~/Content/toastr").Include("~/Content/toastr.css"));
 
-            //bundles.Add(new ScriptBundle("~/bundles/miPackJs").Include("~/Scripts/angularJS/Controlador.js", "~/Scripts/angularJS/Modulo.js"));
+            bundles.Add(new ScriptBundle("~/bundles/appJS").Include("~/Scripts/angularFiles.js"));
 
-
-            bundles.Add(new ScriptBundle("~/bundles/appJS").Include("~/Scripts/angularJS/home.js"));
-
-            //For enabling optimization forcefully.  
-            BundleTable.EnableOptimizations = true; 
 
         }
 

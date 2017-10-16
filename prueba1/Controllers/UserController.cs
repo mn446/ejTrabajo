@@ -22,14 +22,21 @@ namespace prueba1.Controllers
 
         // Datos completos de un usuario ---------------------------------------------------------------
 
-        public ActionResult Details(string id = null)
+        //public ActionResult Details(string id = null)
+        //{
+        //    Usuario usuario = db.usuarios.Find(id);
+        //    if (usuario == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(usuario);
+        //}
+
+        public JsonResult Details()
         {
-            Usuario usuario = db.usuarios.Find(id);
-            if (usuario == null)
-            {
-                return HttpNotFound();
-            }
-            return View(usuario);
+            ModelContext db = new ModelContext();
+            List<Usuario> usersList = db.usuarios.ToList();
+            return Json(usersList, JsonRequestBehavior.AllowGet);
         }
 
         // Dar de alta un usuario -----------------------------------------------------------------------
@@ -42,18 +49,38 @@ namespace prueba1.Controllers
 
         // POST:
 
+        //[HttpPost, ActionName("Create")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult PostCreate(Tuple<Usuario, Telefono> tupla)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        tupla.Item1.activo = true;
+        //        //List<Telefono> tels = new List<Telefono>();
+        //        //tels.Add(tupla.Item2);
+        //        //tupla.Item1.telefonos = tels;
+
+        //        db.usuarios.Add(tupla.Item1);
+        //        //db.telefonos.Add(tupla.Item2);
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+
+        //    return View();
+        //}
+
         [HttpPost, ActionName("Create")]
         [ValidateAntiForgeryToken]
-        public ActionResult PostCreate(Tuple<Usuario, Telefono> tupla)
+        public ActionResult PostCreate(Usuario usuario)
         {
             if (ModelState.IsValid)
             {
-                tupla.Item1.activo = true;
+                usuario.activo = true;
                 //List<Telefono> tels = new List<Telefono>();
                 //tels.Add(tupla.Item2);
                 //tupla.Item1.telefonos = tels;
 
-                db.usuarios.Add(tupla.Item1);
+                db.usuarios.Add(usuario);
                 //db.telefonos.Add(tupla.Item2);
                 db.SaveChanges();
                 return RedirectToAction("Index");

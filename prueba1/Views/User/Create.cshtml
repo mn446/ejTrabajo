@@ -1,5 +1,7 @@
 ﻿@using prueba1.Models;
-@model Tuple<Usuario , Telefono>
+@* @model Tuple<Usuario , Telefono> *@
+@model Usuario
+
 
 @{
     ViewBag.Title = "Create";
@@ -15,30 +17,55 @@
     <fieldset>
         <legend>Usuario</legend>
 
-        <div class="editor-label">
+@*        <div class="editor-label">
             <span>Nombre</span>
         </div>
         <div class="editor-field">
             @Html.EditorFor(tuple => tuple.Item1.Nombre)
             @Html.ValidationMessageFor(tuple => tuple.Item1.Nombre)
-        </div>
+        </div>*@
 
         <div class="editor-label">
+            <span>Nombre</span>
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Nombre)
+            @Html.ValidationMessageFor(model =>model.Nombre)
+        </div>
+
+@*        <div class="editor-label">
             <span>Apellido</span>
         </div>
         <div class="editor-field">
             @Html.EditorFor(tuple => tuple.Item1.Apellido)
             @Html.ValidationMessageFor(tuple => tuple.Item1.Apellido)
-        </div>
+        </div>*@
 
         <div class="editor-label">
+            <span>Apellido</span>
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Apellido)
+            @Html.ValidationMessageFor(model => model.Apellido)
+        </div>
+
+@*        <div class="editor-label">
             <span>Correo electronico</span>
         </div>
         <div class="editor-field">
             @Html.EditorFor(tuple => tuple.Item1.mail)
             @Html.ValidationMessageFor(tuple => tuple.Item1.mail)
+        </div>*@
+
+        <div class="editor-label">
+            <span>Correo electronico</span>
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.mail)
+            @Html.ValidationMessageFor(model => model.mail)
         </div>
 
+        @*
          <div class="editor-label">
             <span> Telefono </span>
         </div>
@@ -46,6 +73,7 @@
             @Html.EditorFor(tuple => tuple.Item2.numero)
             @Html.ValidationMessageFor(tuple => tuple.Item2.numero)
         </div>
+        *@
 
         <p>
             <input type="submit" value="Crear usuario" />

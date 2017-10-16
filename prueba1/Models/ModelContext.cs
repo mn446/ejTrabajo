@@ -13,5 +13,13 @@ namespace prueba1.Models
         public DbSet<Usuario> usuarios { get; set; }
         public DbSet<Telefono> telefonos { get; set; }
         public DbSet<Evento> eventos { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Usuario>().ToTable("Usuarios");
+            modelBuilder.Entity<Usuario>().HasKey(x => x.mail);
+
+        }
+           
     }
 }
