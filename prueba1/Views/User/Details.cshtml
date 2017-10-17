@@ -4,15 +4,18 @@
     ViewBag.Title = "Details";
 }*@
 
-<h2>Datos completos</h2>
+<div ng-controller="myCtrl">
+    <h2>Datos completos</h2>
 
-<fieldset>
+
+<fieldset >
     <legend>Usuario</legend>
 
     <div class="display-label">
          <span><b>Nombre</b></span>
     </div>
     <div class="display-field">
+          <span class="text-center"> {{usuario.Nombre}}</span>
 @*        @Html.DisplayFor(model => model.Nombre)*@
     </div>
 
@@ -20,6 +23,7 @@
          <span><b>Apellido</b></span>
     </div>
     <div class="display-field">
+        <span class="text-center"> {{usuario.Apellido}}</span>
 @*        @Html.DisplayFor(model => model.Apellido)*@
     </div>
 
@@ -27,10 +31,15 @@
          <span><b>Correo Electronico</b></span>
     </div>
     <div class="display-field">
+        <span class="text-center"> {{usuario.mail}}</span>
 @*        @Html.DisplayFor(model => model.mail)*@
     </div>
 </fieldset>
 <p>
-@*    @Html.ActionLink("Modificar", "Edit", new { id=Model.mail }) *@|
+@*    @Html.ActionLink("Modificar", "Edit", new { id=Model.mail }) *@
     @Html.ActionLink("Ir a inicio", "Index","Home")
 </p>
+
+
+</div>
+

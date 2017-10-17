@@ -10,26 +10,37 @@
         <tr>
             <th class="text-center">
                 <span>Nombre</span>
-                <input type="text" ng-model="search.Nombre"/>
+                <input type="text" ng-model="search.Nombre" name="usuario.Nombre" value="{{usuario.Nombre}}"/>
             </th>
             <th class="text-center">
                 <span>Apellido</span>
-                <input type="text" ng-model="search.Apellido"  />
+                <input type="text" ng-model="search.Apellido" name="usuario.Apellido" value="{{usuario.Apellido}}" />
             </th>
             <th class="text-center">
                 <span>Correo Electronico</span>
-                <input type="text" ng-model="search.mail"  />
+                <input type="text" ng-model="search.mail" name="usuario.mail" value="{{usuario.mail}}" />
+            </th>
+            <th class="text-center">
+                <span>Telefonos</span>
+                <input type="text" ng-model="search.telefonos"  />
+            </th>
+            <th class="text-center">
+                <input type="button" ng-show="modif" value="Guardar modificaciones" />
             </th>
         </tr>
 
+        <input type=text" name="name" ng-model="otro" />
+        <p> {{otro}}</p>
 
         <tr ng-repeat="us in usuarios | filter:search:startsWith">
             <td class="text-center"> {{us.Nombre}}</td>
             <td class="text-center">{{us.Apellido}}</td>
             <td class="text-center">{{us.mail}}</td>
+            <td class="text-center">telefono</td>
+
             <td class="text-center">
-                <a ng-href="@Url.Content("~/User/Edit/"){{us.mail}}"><button type="button" class="btn-default pull-right"> Modificar </button></a>
-                <a ng-href="@Url.Content("~/User/Details/"){{us.mail}}"><button type="button" class="btn-default pull-right"> Consultar datos completos</button></a>
+                <a ng-href="@Url.Content("~/User/Edit/"){{us.mail}}"> <button type="button" class="btn-default pull-right" ng-click="selectUser(us.mail)"> Modificar </button></a>
+                <a ng-href="@Url.Content("~/User/Details/"){{us.mail}}"><button type="button" class="btn-default pull-right" ng-click="selectUser(us.mail)"> Consultar datos completos</button></a>
                 <a ng-href="@Url.Content("~/User/LogicDelete/"){{us.mail}}"><button type="button" class="btn-default pull-right"> Baja Logica </button></a>
                 <a ng-href="@Url.Content("~/User/Delete/"){{us.mail}}"><button type="button" class="btn-default pull-right"> Baja Fisica </button></a>
             </td>

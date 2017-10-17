@@ -13,6 +13,9 @@ myApp.controller
     function ($scope, $http) {
 
         $scope.usuarios = "";
+        $scope.usuario = "inicial";
+        $scope.modif = 0;
+        $scope.otro = "lkjhlkjh";
 
         // Obtener datos de usuarios en un Json
         $http.get("/User/GetUsers")
@@ -20,11 +23,23 @@ myApp.controller
             $scope.usuarios = response.data;
         });
 
-        // Obtener datos de un usuario
-        $http.post("/User/GetUsers")
-       .then(function (response) {
-           $scope.usuarios = response.data;
-       });
+        // Modificar usuario
+        $scope.modificar = function(){
+            $scope.modif = 1;
+            //console.log($scope.usuario.Nombre);
+
+        }
+
+        
+        $scope.selectUser = function (id) {
+            $http.post("User/GetUserByMail", { mail: id })
+                .then(function successCallback(response)
+                {
+                    $scope.usuario = response.data;
+                    console.log($scope.usuario);
+                }
+            )
+        }
 
         // Funcion para filtrar si tiene una expresion al comienzo
         $scope.startsWith = function (actual, expected) {

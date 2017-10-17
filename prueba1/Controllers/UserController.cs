@@ -40,13 +40,13 @@ namespace prueba1.Controllers
         //}
 
 
-        public ActionResult Details(string mail)
+        public ActionResult Details()
         {
-            Usuario user = db.usuarios.Find(mail);
-            return View(Json(user, JsonRequestBehavior.AllowGet));
+            return View();
         }
 
-        public JsonResult GetUser(string mail)
+        [HttpPost]
+        public JsonResult GetUserByMail(string mail)
         {
             Usuario user = db.usuarios.Find(mail);
             return Json(user, JsonRequestBehavior.AllowGet);
