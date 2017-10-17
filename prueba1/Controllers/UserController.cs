@@ -17,27 +17,33 @@ namespace prueba1.Controllers
 
         public ActionResult Index()
         {
-            return View(db.usuarios.ToList());
+            return View();
         }
 
-        // Datos completos de un usuario ---------------------------------------------------------------
-
-        //public ActionResult Details(string id = null)
-        //{
-        //    Usuario usuario = db.usuarios.Find(id);
-        //    if (usuario == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(usuario);
-        //}
-
-        public JsonResult Details()
+        public JsonResult PostIndex()
         {
-            ModelContext db = new ModelContext();
             List<Usuario> usersList = db.usuarios.ToList();
             return Json(usersList, JsonRequestBehavior.AllowGet);
         }
+
+
+        // Datos completos de un usuario ---------------------------------------------------------------
+
+        public ActionResult Details(string id = null)
+        {
+            Usuario usuario = db.usuarios.Find(id);
+            if (usuario == null)
+            {
+                return HttpNotFound();
+            }
+            return View(usuario);
+        }
+
+        //public JsonResult Details()
+        //{
+        //    List<Usuario> usersList = db.usuarios.ToList();
+        //    return Json(usersList, JsonRequestBehavior.AllowGet);
+        //}
 
         // Dar de alta un usuario -----------------------------------------------------------------------
 

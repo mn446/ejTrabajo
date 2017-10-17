@@ -1,13 +1,48 @@
-﻿@model IEnumerable<prueba1.Models.Usuario>
-
-@{
-    ViewBag.Title = "Index";
-}
+﻿@*@model IEnumerable<prueba1.Models.Usuario>*@
 
 
 <h2>Gestion de usuarios</h2>
 
-<table ng-controller="myCtrl">
+<a ng-href="@Url.Content("~/User/Create/")">
+    <button type="button" class="btn pull-right"> Crear nuevo usuario </button>
+</a>
+
+<div ng-controller="myCtrl">
+
+    <table class="table table-striped">
+        <tr>
+            <th class="text-center">
+                <span>Nombre</span>
+                <input type="text" ng-model="search.Nombre"/>
+            </th>
+            <th class="text-center">
+                <span>Apellido</span>
+                <input type="text" ng-model="search.Apellido"  />
+            </th>
+            <th class="text-center">
+                <span>Correo Electronico</span>
+                <input type="text" ng-model="search.mail"  />
+            </th>
+        </tr>
+
+
+        <tr ng-repeat="us in usuarios | filter:search:startsWith">
+            <td class="text-center"> {{us.Nombre}}</td>
+            <td class="text-center">{{us.Apellido}}</td>
+            <td class="text-center">{{us.mail}}</td>
+            <td class="text-center">
+                <a ng-href="@Url.Content("~/User/Edit/"){{us.mail}}"><button type="button" class="btn-default pull-right"> Modificar </button></a>
+                <a ng-href="@Url.Content("~/User/Details/"){{us.mail}}"><button type="button" class="btn-default pull-right"> Consultar datos completos</button></a>
+                <a ng-href="@Url.Content("~/User/LogicDelete/"){{us.mail}}"><button type="button" class="btn-default pull-right"> Baja Logica </button></a>
+                <a ng-href="@Url.Content("~/User/Delete/"){{us.mail}}"><button type="button" class="btn-default pull-right"> Baja Fisica </button></a>
+            </td>
+        </tr>
+
+    </table>
+
+</div>
+
+@*<table ng-controller="myCtrl">
     <tr>
         <th>
             <span>Nombre</span>
@@ -21,7 +56,7 @@
             <span>Correo Electronico</span>
             <input type="text" name="mail" id="email" />
         </th>
-    </tr>
+    </tr>*@
 
 @*@using (Ajax.BeginForm("Index", "User", null , new AjaxOptions()
 {
@@ -39,7 +74,7 @@
     </div>*@
 
 
-        @foreach (var item in Model) 
+@*        @foreach (var item in Model) 
         {
             if (item.activo)  // Baja lógica
             {     
@@ -61,7 +96,7 @@
                 </td>
             </tr>
             }  
-        }
+        }*@
 
 
 
@@ -132,40 +167,9 @@
 
 </script>*@
 
-</table>
-
-<p>
-    @Html.ActionLink("Crear Usuario", "Create")
-</p>
-
-<div ng-controller="myCtrl">
-    <p> {{ fullName}}</p>
-</div>
-
-<div ng-controller="myCtrl">
-
-    <table>
-        <tr>
-            <th>
-                <span>Nombre</span>
-                @*<input type="text" name="nombre" id="name" />*@
-            </th>
-            <th>
-                <span>Apellido</span>
-                @*<input type="text" name="apellido" id="surname" />*@
-            </th>
-            <th>
-                <span>Correo Electronico</span>
-                @*<input type="text" name="mail" id="email" />*@
-            </th>
-        </tr>
+@*</table>*@
 
 
-        <tr ng-repeat="us in usuarios">
-            <td> {{us.Nombre}}</td>
-            <td>{{us.Apellido}}</td>
-            <td>{{us.mail}}</td>
-        </tr>
-    </table>
 
-</div>
+
+
