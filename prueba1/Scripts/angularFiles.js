@@ -14,10 +14,17 @@ myApp.controller
 
         $scope.usuarios = "";
 
-        $http.get("/User/PostIndex")
+        // Obtener datos de usuarios en un Json
+        $http.get("/User/GetUsers")
         .then(function (response) {
             $scope.usuarios = response.data;
         });
+
+        // Obtener datos de un usuario
+        $http.post("/User/GetUsers")
+       .then(function (response) {
+           $scope.usuarios = response.data;
+       });
 
         // Funcion para filtrar si tiene una expresion al comienzo
         $scope.startsWith = function (actual, expected) {

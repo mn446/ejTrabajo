@@ -1,8 +1,8 @@
-﻿@model prueba1.Models.Usuario
+﻿@*@model prueba1.Models.Usuario
 
 @{
     ViewBag.Title = "Details";
-}
+}*@
 
 <h2>Datos completos</h2>
 
@@ -13,24 +13,24 @@
          <span><b>Nombre</b></span>
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Nombre)
+@*        @Html.DisplayFor(model => model.Nombre)*@
     </div>
 
     <div class="display-label">
          <span><b>Apellido</b></span>
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Apellido)
+@*        @Html.DisplayFor(model => model.Apellido)*@
     </div>
 
     <div class="display-label">
          <span><b>Correo Electronico</b></span>
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.mail)
+@*        @Html.DisplayFor(model => model.mail)*@
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Modificar", "Edit", new { id=Model.mail }) |
+@*    @Html.ActionLink("Modificar", "Edit", new { id=Model.mail }) *@|
     @Html.ActionLink("Ir a inicio", "Index","Home")
 </p>

@@ -20,30 +20,37 @@ namespace prueba1.Controllers
             return View();
         }
 
-        public JsonResult PostIndex()
+        public JsonResult GetUsers()
         {
             List<Usuario> usersList = db.usuarios.ToList();
             return Json(usersList, JsonRequestBehavior.AllowGet);
         }
-
+        
 
         // Datos completos de un usuario ---------------------------------------------------------------
 
-        public ActionResult Details(string id = null)
+        //public ActionResult Details(string id = null)
+        //{
+        //    Usuario usuario = db.usuarios.Find(id);
+        //    if (usuario == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(usuario);
+        //}
+
+
+        public ActionResult Details(string mail)
         {
-            Usuario usuario = db.usuarios.Find(id);
-            if (usuario == null)
-            {
-                return HttpNotFound();
-            }
-            return View(usuario);
+            Usuario user = db.usuarios.Find(mail);
+            return View(Json(user, JsonRequestBehavior.AllowGet));
         }
 
-        //public JsonResult Details()
-        //{
-        //    List<Usuario> usersList = db.usuarios.ToList();
-        //    return Json(usersList, JsonRequestBehavior.AllowGet);
-        //}
+        public JsonResult GetUser(string mail)
+        {
+            Usuario user = db.usuarios.Find(mail);
+            return Json(user, JsonRequestBehavior.AllowGet);
+        }
 
         // Dar de alta un usuario -----------------------------------------------------------------------
 
